@@ -11,23 +11,27 @@ import com.example.fragmenttest.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
-
     private val binding get() = _binding!!
-
     private var mainActivity: MainActivity? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainActivity = context as MainActivity
     }
-
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        layoutInflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding =
-            FragmentFirstBinding.inflate(inflater, container, false)
+            FragmentFirstBinding.inflate(layoutInflater, container, false)
+        if(arguments?.getString("key")!=null){
+            binding.fr01Tv01.text = this.arguments?.getString("key")
+        }
+
+        if(requireArguments().containsKey("key")) {
+
+        }
+
 
         binding.apply {
             fr01Btn01.text = arguments?.getString("FirstFragment")

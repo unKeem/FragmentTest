@@ -21,6 +21,14 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        firstFragment = FirstFragment()
+        secondFragment = SecondFragment()
+        thirdFragment = ThirdFragment()
+        //first fragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, firstFragment)
+            .commit()
+
         binding.apply {
             setTabLayout()
         }
@@ -30,21 +38,21 @@ class MainActivity : AppCompatActivity() {
         when (message) {
             "FirstFragment" -> {
                 supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.firstFrameLayout, FirstFragment())
+                    replace(R.id.frameLayout, firstFragment)
                     commit()
                 }
             }
 
             "SecondFragment" -> {
                 supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.secondFrameLayout, SecondFragment())
+                    replace(R.id.frameLayout, secondFragment)
                     commit()
                 }
             }
 
             "ThirdFragment" -> {
                 supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.thirdFrameLayout, ThirdFragment())
+                    replace(R.id.frameLayout, thirdFragment)
                     commit()
                 }
             }
@@ -81,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         changeFragment("ThirdFragment")
                     }
                 }
-                transaction.commit()
+//                transaction.commit()
 
             }
 
